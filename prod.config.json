@@ -13,6 +13,12 @@
         "database": "trade"
     },
     "binance_api_key": "",
-    "binance_secret_key": ""
+    "binance_secret_key": "",
+    "limit_usd": 2000,
+    "first_order_usd": 100,
+    "first_raise_position_usd": 120,
+    "multiplier_of_position_increase_amount": 1.1,
+    "down_how_much_to_add_to_the_position": 0.1,
+    "profit_target": 0.01 
   }
   
