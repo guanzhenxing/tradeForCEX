@@ -11,4 +11,4 @@ client = Spot(api_key=keys["binance_api_key"], api_secret=keys["binance_secret_k
 # Get account and balance information
 print(client.account())
 
-print(client.get_orders())
+print(client.get_orders("BTCBUSD"))
