@@ -31,8 +31,10 @@ def checkLatestOpenBuyOder():
     while True:
         try:
             order_id = getLatestOpenBuyOrderId()
+            if order_id == "0":
+                time.sleep(5)
+                continue
             res = getOrderStatus(order_id)
-            logger.info(res)
             if res["status"] == "FILLED":
                 # 获得btc数量
                 executedQty = res["executedQty"]
@@ -43,12 +45,9 @@ def checkLatestOpenBuyOder():
                 logger.info("1")
                 count = getRound()
                 new_price, new_quantity = reCalTakeProfitOrder(count)
-                logger.info(new_price)
                 # 撤销订单并重新下单
                 sell_order_id = getSellOrderId(count)
-                logger.info(sell_order_id)
                 res = cancelReplaceOrder(sell_order_id, new_quantity, new_price)
-                logger.info(res)
                 # 撤销订单并重新下单成功
                 new_sell_order_id = res["orderId"]
                 delOrderInfo(sell_order_id)
@@ -178,17 +177,17 @@ def main():
 
 if __name__ == "__main__":
     logger.info("量化机器人启动！")
-    # main()
-    # p1 = Process(target=checkLatestOpenBuyOder)
-    # p1.start()
-    # logger.info("检测最新买单成交！")
-    # p2 = Process(target=checkOpenSellOder)
-    # p2.start()
-    # logger.info("检测止盈订单成交！")
+    main()
+    p1 = Process(target=checkLatestOpenBuyOder)
+    p1.start()
+    logger.info("检测最新买单成交！")
+    p2 = Process(target=checkOpenSellOder)
+    p2.start()
+    logger.info("检测止盈订单成交！")
     # res = cancelOpenOrders(keys["symbol"])
     # logger.info(res)
-    res = getOpenOrders(keys["symbol"])
-    logger.info(res)
-    res =  getOrderStatus(3843464)
-    logger.info(res)
+    # res = getOpenOrders(keys["symbol"])
+    # logger.info(res)
+    # res =  getOrderStatus(3843464)
+    # logger.info(res)
     

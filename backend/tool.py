@@ -131,7 +131,7 @@ def delOrderInfo(order_id):
     删除一个订单信息
     '''
     mysql_client = OPMysql()
-    sql = "delete trade_history where order_id = {0};"
+    sql = "delete from trade_history where order_id = {0};"
     while True:
         try:
             res = mysql_client.op_insert(sql.format(order_id))
@@ -177,13 +177,13 @@ def cancelReplaceOrder(order_id, quantity, price):
     # 撤销订单
     while True:
         res = getOrderStatus(order_id)
-        if res["status"] == "FILLED":
+        if res["status"] == "CANCELED":
             break
         else:
             canccelOrder(order_id)
     
     # 重新下单
-    res = createLimitOrder(1, quantity, price)
+    res = createLimitOrder("SELL", quantity, price)
     return res
 
 def reCalTakeProfitOrder(count):
