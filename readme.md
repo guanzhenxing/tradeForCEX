@@ -35,7 +35,11 @@
     # 下跌多少加仓
     "down_how_much_to_add_to_the_position": 0.01,
     # 止盈单收益（已成交买单的比率）
-    "profit_target": 0.01 
+    "profit_target": 0.01,
+    # api接口 
+    # 正式环境：https://api.binance.com
+    # 测试环境：
+    "base_url": "https://testnet.binance.vision"
   }
 ```
 #

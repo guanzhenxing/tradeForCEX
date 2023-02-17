@@ -9,4 +9,4 @@ with open('config.json', 'r') as my_config:
 logger = logging.getLogger("trade")
 redis_pool = redis.ConnectionPool(**keys['redis'])
 redis_conn = redis.Redis(connection_pool=redis_pool)
-client = Spot(base_url="https://testnet.binance.vision",api_key=keys["binance_api_key"], api_secret=keys["binance_secret_key"])
+client = Spot(base_url=keys["base_url"],api_key=keys["binance_api_key"], api_secret=keys["binance_secret_key"])

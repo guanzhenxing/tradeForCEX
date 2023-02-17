@@ -8,8 +8,8 @@
     "mysql": {
         "host": "127.0.0.1",
         "port": 3306,
-        "username": "ops",
-        "passwd": "wblocaldev",
+        "username": "root",
+        "passwd": "",
         "database": "trade"
     },
     "binance_api_key": "",
@@ -21,6 +21,6 @@
     "multiplier_of_position_increase_amount": 1.1,
     "down_how_much_to_add_to_the_position": 0.01,
     "profit_target": 0.01,
-    "base_url": "https://api.binance.com"
+    "base_url": "https://testnet.binance.vision"
   }
   
